@@ -95,7 +95,7 @@ app.post('/login', async (req, res) => {
       const token = jwt.sign({ userId: user._id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
       req.session.token = token;
   
-      res.redirect(`/index?username=${newUser.username}`);
+      res.redirect(`/index?username=${user.username}`);
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
